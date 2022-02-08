@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "github.com/DCCXXVI726/hezzlTest;userpc";
+
+message User {
+  int64 id = 1;
+  string pid = 2;
+}
+
+message AddUserRequest {
+  User user = 1;
+}
+
+message AddUserResponse {
+  User user = 1;
+}
+
+message DeleteUserRequest {
+  string pid = 1;
+}
+
+message DeleteUserResponse  {
+  string pid = 1;
+}
+
+message ListUserRequest {
+
+}
+
+message ListUserResponse {
+  User user = 1;
+}
+
+service UserService {
+  rpc AddUser (AddUserRequest) returns (AddUserResponse);
+  rpc DeleteUser (DeleteUserRequest) returns (DeleteUserResponse);
+  rpc ListUser (ListUserRequest) returns (stream ListUserResponse);
+}
+
